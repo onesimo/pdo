@@ -12,3 +12,4 @@ $Product = new Product;
 $service = new ServiceProduct($db,$Product);
 
 print_r($service->find(4))
+
