@@ -18,10 +18,11 @@ class Conn implements IConn
 	public function connect()
 	{
 		try{
+			  
 			return new \PDO(
 				"mysql:host={$this->host};dbname={$this->dbname}",
-				$this->user,
-				$this->pass
+				"{$this->user}",
+				"{$this->pass}"
 			);
 
 		}catch(\PDOException $e){

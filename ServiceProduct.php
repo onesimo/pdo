@@ -22,7 +22,7 @@ class ServiceProduct
 	}
 	public function find($id)
 	{
-		$query = "select * from `products` where id:id ";
+		$query = "select * from `products` where id = :id ";
 		$stmt = $this->db->prepare($query);
 		$stmt->bindValue(":id", $id);
 		
@@ -33,7 +33,7 @@ class ServiceProduct
 
 	public function save()
 	{
-		$query = "insert into `produts` (`name`, `desc`) values (:name,:desc)";
+		$query = "insert into `products` (`name`, `desc`) values (:name,:desc)";
 		$stmt = $this->db->prepare($query);
 		$stmt->bindValue(":name",$this->product->getname());
 		$stmt->bindValue(":desc",$this->product->getDesc());
@@ -45,13 +45,16 @@ class ServiceProduct
 
 	public function update($id)
 	{
-		$query = "update `produts` set `name`=?, `desc`=? where `id`=?";
+		$query = "update `products` set `name`=?, `desc`=? where `id`=?";
 		$stmt = $this->db->prepare($query);
 		$stmt->bindValue(1,$this->product->getname());
 		$stmt->bindValue(2,$this->product->getDesc());
 		$stmt->bindValue(3,$this->product->getId());
 
+		//print_r($this->product->getId());
 		$res = $stmt->execute();
+
+		print_r($stmt);
 		return $res;
 		
 	}
@@ -59,7 +62,7 @@ class ServiceProduct
 	public function delete(int $id)
 	{
 		
-		$query = "delete from `produts` where `id`=:id";
+		$query = "delete from `products` where `id`=:id";
 		$stmt = $this->db->prepare($query);
 		$stmt->bindValue(":id",$id);
 
