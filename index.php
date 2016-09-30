@@ -1,8 +1,4 @@
-<?php 
-
-
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
+<?php  
 
 require_once "IConn.php";
 require_once "Conn.php";
@@ -13,16 +9,14 @@ require_once "ServiceProduct.php";
 $db = new Conn("127.0.0.1","test_oo", "phpmyadmin","some_pass");
 $product = new Product;
 
-$product->setId(1)
-        ->setName("JS Course")
-        ->setDesc("Javascript C");
+$product->setId(2)
+        ->setName("Node.JS Course")
+        ->setDesc("Advanced Javascript");
  
 $service = new ServiceProduct($db,$product);
 
 //$service->save();
 //print_r($service->find(3));
 //print_r($service->delete(1));
-print_r($service->update(3));
-
-
-echo "teste";
+print_r($service->update(2));
+ 

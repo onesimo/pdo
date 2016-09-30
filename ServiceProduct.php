@@ -43,18 +43,15 @@ class ServiceProduct
 		
 	}
 
-	public function update($id)
+	public function update()
 	{
 		$query = "update `products` set `name`=?, `desc`=? where `id`=?";
 		$stmt = $this->db->prepare($query);
 		$stmt->bindValue(1,$this->product->getname());
 		$stmt->bindValue(2,$this->product->getDesc());
 		$stmt->bindValue(3,$this->product->getId());
-
-		//print_r($this->product->getId());
+ 
 		$res = $stmt->execute();
-
-		print_r($stmt);
 		return $res;
 		
 	}
